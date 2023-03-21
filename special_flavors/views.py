@@ -42,4 +42,4 @@ def show_flavor(request):
 
     else:
         flavors = Special_Flavors.objects.all()
-        return render(request, 'special_flavors/special.html', {'flavors':flavors, 'date':date})
+        return render(request, 'special_flavors/special.html', {'flavors':flavors})
