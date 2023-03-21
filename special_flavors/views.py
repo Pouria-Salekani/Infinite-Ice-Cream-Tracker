@@ -11,15 +11,16 @@ def grab_flavors(file):
     
     for item in data:
         #offset the error
-        if 'special_flavors' in item:
-            flavor_name = item['special_flavors']
-            if not Special_Flavors.objects.filter(name=flavor_name).exists():
-                new_data = True
-                if one_off:
-                    Special_Flavors.objects.all().delete()
-                    one_off = False
-                flavor = Special_Flavors(name=flavor_name)
-                flavor.save()
+        if item == 'special_flavors':
+            for spc in item:
+                flavor_name = spc
+                if not Special_Flavors.objects.filter(name=flavor_name).exists():
+                    new_data = True
+                    if one_off:
+                        Special_Flavors.objects.all().delete()
+                        one_off = False
+                    flavor = Special_Flavors(name=flavor_name)
+                    flavor.save()
 
     return new_data
 
