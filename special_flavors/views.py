@@ -29,19 +29,17 @@ def show_flavor(request):
     #then OUTSIDE the: if req.POST
     #we just grab the database and proceed
     #better this way since the values wont needed to be updated each time we click on a button
-    is_new = False
 
     if request.method == 'POST':
         new_data = grab_flavors(request.body)
-        is_new = True
 
-    #shows the updated today whenever Scrapy updates it
-    date = str(datetime.date.today())
-    date = date[date.find('-')+1:]
+        #shows the updated today whenever Scrapy updates it
+        date = str(datetime.date.today())
+        date = date[date.find('-')+1:]
 
-    flavors = Special_Flavors.objects.all()
+        flavors_updated = Special_Flavors.objects.all()
+        return render(request, 'special_flavors/special.html', {'flavors':flavors_updated, 'new_data':new_data, 'date':date})
 
-    if is_new:
-        return render(request, 'special_flavors/special.html', {'flavors':flavors, 'new_data':new_data, 'date':date})
     else:
+        flavors = Special_Flavors.objects.all()
         return render(request, 'special_flavors/special.html', {'flavors':flavors, 'date':date})
