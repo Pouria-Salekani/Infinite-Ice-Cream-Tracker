@@ -32,6 +32,7 @@ def grab_flavors(file):
 def show_flavor(request):
     if request.method == 'POST':
         print('STANDARD SIDE YEE')
+        print(request.body)
         grab_flavors(request.body)
 
     flavors = Standard_Flavors.objects.all()

@@ -33,6 +33,7 @@ def show_flavor(request):
     if request.method == 'POST':
 
         print('WORKS FROM SPECIAL side')
+        print(request.body)
 
         new_data = grab_flavors(request.body)
 
