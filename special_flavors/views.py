@@ -31,6 +31,9 @@ def show_flavor(request):
     #better this way since the values wont needed to be updated each time we click on a button
 
     if request.method == 'POST':
+
+        print('WORKS FROM SPECIAL side')
+
         new_data = grab_flavors(request.body)
 
         #shows the updated today whenever Scrapy updates it

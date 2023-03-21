@@ -31,6 +31,7 @@ def grab_flavors(file):
 @csrf_exempt
 def show_flavor(request):
     if request.method == 'POST':
+        print('STANDARD SIDE YEE')
         grab_flavors(request.body)
 
     flavors = Standard_Flavors.objects.all()
