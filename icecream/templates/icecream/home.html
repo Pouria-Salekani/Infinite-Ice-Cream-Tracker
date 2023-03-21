@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- This is usually where the CSS and style goes to -->
+<head>
+    <title>Ice Cream Finder</title>
+    
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href='{% static "icecream/styles.css"%}'> 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+</head>
+
+
+<!-- This is where the rest of your code for the home page goes -->
+<body class="home">
+    <!-- To access the STYLE.CSS use their *NAME* by making a ---DIV CLASS--- and naming it the exact name of the style.css style -->
+    <div class="centered-text">
+        <h1>Ice Cream</h1>
+    </div>
+
+    
+    <ul class="tabs-container">
+      <li class="tabs"><a href="{% url 'special_flavors' %}" class="tab-link home-font"> Special Flavors </a></li>
+      <li class="tabs"><a href="{% url 'standard_flavors' %}" class="tab-link home-font"> Standard Flavors </a></li>
+    </ul>
+
+</body>
+</html>

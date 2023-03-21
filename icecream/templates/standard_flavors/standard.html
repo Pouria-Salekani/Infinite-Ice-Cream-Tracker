@@ -1,0 +1,29 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href='{% static "icecream/styles.css"%}'> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lilita+One&display=swap" rel="stylesheet">
+
+<style>
+    .p1{
+        font-family: 'Lilita One', cursive;
+        color: #000000e8;
+        font-size: 20px;
+        font-weight: lighter;
+        margin-top: 15px;
+    }
+</style>
+
+
+<body class="standard"> 
+    <div class="cent-text">
+        <h1 class="my-font">Standard Flavors</h1>
+    </div>
+
+
+    <div class="standard-container"> 
+        {% for flavor in flavors %}
+            <p class="p1">{{ flavor.name }}</p>
+        {% endfor %}
+    </div>
+</body>
