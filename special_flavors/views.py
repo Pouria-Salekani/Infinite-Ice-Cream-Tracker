@@ -8,19 +8,29 @@ def grab_flavors(file):
     data = json.loads(file)
     new_data = False
     one_off = True
+
+    flavor = Special_Flavors(name=flavor_name)
     
+    # for item in data:
+    #     #offset the error
+    #     if item == 'special_flavors':
+    #         for spc in data[item]:
+    #             flavor_name = spc
+    #             if not Special_Flavors.objects.filter(name=flavor_name).exists():
+    #                 new_data = True
+    #                 if one_off:
+    #                     Special_Flavors.objects.all().delete()
+    #                     one_off = False
+    #                 flavor = Special_Flavors(name=flavor_name)
+    #                 flavor.save()
+
     for item in data:
         #offset the error
         if item == 'special_flavors':
-            for spc in data[item]:
-                flavor_name = spc
-                if not Special_Flavors.objects.filter(name=flavor_name).exists():
-                    new_data = True
-                    if one_off:
-                        Special_Flavors.objects.all().delete()
-                        one_off = False
-                    flavor = Special_Flavors(name=flavor_name)
-                    flavor.save()
+            for std in data[item]:
+                flavor_name = std
+                flavor = Special_Flavors(name=flavor_name)
+                flavor.save()
 
     return new_data
 
