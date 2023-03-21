@@ -1,1 +1,1 @@
-web: gunicorn icecream.wsgi:icecream --log-file -
+web: gunicorn icecream.wsgi --log-file -
