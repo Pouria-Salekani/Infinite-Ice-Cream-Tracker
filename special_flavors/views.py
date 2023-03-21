@@ -9,7 +9,7 @@ def grab_flavors(file):
     new_data = False
     one_off = True
 
-    flavor = Special_Flavors(name=flavor_name)
+    Special_Flavors.objects.all().delete()
     
     # for item in data:
     #     #offset the error
