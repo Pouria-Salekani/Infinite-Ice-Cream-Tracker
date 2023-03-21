@@ -37,8 +37,8 @@ def show_flavor(request):
         print(request.body)
         grab_flavors(request.body)
 
-    flavors = Standard_Flavors.objects.all()
-    return render(request, 'standard_flavors/standard.html', {'flavors':flavors})
+        flavors = Standard_Flavors.objects.all()
+        return render(request, 'standard_flavors/standard.html', {'flavors':flavors})
 
 
 
