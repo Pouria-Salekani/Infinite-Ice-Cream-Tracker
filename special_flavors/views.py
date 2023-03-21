@@ -37,8 +37,8 @@ def show_flavor(request):
         date = str(datetime.date.today())
         date = date[date.find('-')+1:]
 
-        flavors_updated = Special_Flavors.objects.all()
-        return render(request, 'special_flavors/special.html', {'flavors':flavors_updated, 'new_data':new_data, 'date':date})
+        flavors = Special_Flavors.objects.all()
+        return render(request, 'special_flavors/special.html', {'flavors':flavors, 'new_data':new_data, 'date':date})
 
     else:
         flavors = Special_Flavors.objects.all()
