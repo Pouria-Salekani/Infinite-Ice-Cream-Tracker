@@ -16,6 +16,7 @@ def grab_flavors(file):
             for std in data[item]:
                 flavor_name = std
                 if not Standard_Flavors.objects.filter(name=flavor_name).exists():
+                    print(flavor_name, ' -----DOES NOT EXIST')
                     if one_off:
                         Standard_Flavors.objects.all().delete()
                         one_off = False
