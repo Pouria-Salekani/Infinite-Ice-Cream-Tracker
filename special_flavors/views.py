@@ -12,7 +12,7 @@ def grab_flavors(file):
     for item in data:
         #offset the error
         if item == 'special_flavors':
-            for spc in item:
+            for spc in data[item]:
                 flavor_name = spc
                 if not Special_Flavors.objects.filter(name=flavor_name).exists():
                     new_data = True
