@@ -48,9 +48,12 @@ def show_flavor(request):
         print('STANDARD SIDE YEE')
         print(request.body)
         grab_flavors(request.body)
+        flavors = Standard_Flavors.objects.all()
+        return render(request, 'standard_flavors/standard.html', {'flavors':flavors})
 
-    flavors = Standard_Flavors.objects.all()
-    return render(request, 'standard_flavors/standard.html', {'flavors':flavors})
+    else:
+        flavors = Standard_Flavors.objects.all()
+        return render(request, 'standard_flavors/standard.html', {'flavors':flavors})
 
 
 
