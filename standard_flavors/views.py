@@ -5,21 +5,21 @@ import datetime
 import json
 
 
-def check_new_data(data):
-    new_data = None
-    for item in data:
-        if item == 'standard_flavors':
-            for std in data[item]:
-                flavor_name = std
-                if not Standard_Flavors.objects.filter(name=flavor_name).exists():
-                     new_data = flavor_name
+# def check_new_data(data):
+#     new_data = None
+#     for item in data:
+#         if item == 'standard_flavors':
+#             for std in data[item]:
+#                 flavor_name = std
+#                 if not Standard_Flavors.objects.filter(name=flavor_name).exists():
+#                      new_data = flavor_name
 
-    return new_data
+#     return new_data
 
 #better for it to be here, will be executed after each file click
 def grab_flavors(file):
     data = json.loads(file)
-    new_data = check_new_data(data)
+    new_data = True
     Standard_Flavors.objects.all().delete()
 
     # for item in data:
