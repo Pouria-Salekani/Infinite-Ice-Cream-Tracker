@@ -4,10 +4,22 @@ from .models import Special_Flavors
 import datetime
 import json
 
+
+def check_new_data(data):
+    new_data = False
+    for item in data:
+        if item == 'special_flavors':
+            for spc in data[item]:
+                flavor_name = spc
+                if not Special_Flavors.objects.filter(name=flavor_name).exists():
+                     new_data = True
+
+    return new_data
+
+
 def grab_flavors(file):
     data = json.loads(file)
-    new_data = False
-    one_off = True
+    new_data = check_new_data(data)
 
     Special_Flavors.objects.all().delete()
     
@@ -24,11 +36,21 @@ def grab_flavors(file):
     #                 flavor = Special_Flavors(name=flavor_name)
     #                 flavor.save()
 
+    # for item in data:
+    #     #offset the error
+    #     if item == 'special_flavors':
+    #         for spc in data[item]:
+    #             flavor_name = spc
+    #             if not Special_Flavors.objects.filter(name=flavor_name).exists():
+    #                  new_data = True
+    #             flavor = Special_Flavors(name=flavor_name)
+    #             flavor.save()
+
     for item in data:
         #offset the error
         if item == 'special_flavors':
-            for std in data[item]:
-                flavor_name = std
+            for spc in data[item]:
+                flavor_name = spc
                 flavor = Special_Flavors(name=flavor_name)
                 flavor.save()
 

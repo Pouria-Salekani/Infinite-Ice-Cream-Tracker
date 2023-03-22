@@ -1,14 +1,25 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from .models import Standard_Flavors
+import datetime
 import json
 
-# Create your views here.
+
+def check_new_data(data):
+    new_data = False
+    for item in data:
+        if item == 'standard_flavors':
+            for std in data[item]:
+                flavor_name = std
+                if not Standard_Flavors.objects.filter(name=flavor_name).exists():
+                     new_data = True
+
+    return new_data
 
 #better for it to be here, will be executed after each file click
 def grab_flavors(file):
     data = json.loads(file)
-    one_off = True
+    new_data = check_new_data(data)
     Standard_Flavors.objects.all().delete()
 
     # for item in data:
@@ -31,6 +42,8 @@ def grab_flavors(file):
                 flavor_name = std
                 flavor = Standard_Flavors(name=flavor_name)
                 flavor.save()
+    
+    return new_data
 
 
     
@@ -47,9 +60,15 @@ def show_flavor(request):
     if request.method == 'POST':
         print('STANDARD SIDE YEE')
         print(request.body)
-        grab_flavors(request.body)
+
+        new_data = grab_flavors(request.body)
+
+        #shows the updated today whenever Scrapy updates it
+        date = str(datetime.date.today())
+        date = date[date.find('-')+1:]
+
         flavors = Standard_Flavors.objects.all()
-        return render(request, 'standard_flavors/standard.html', {'flavors':flavors})
+        return render(request, 'standard_flavors/standard.html', {'flavors':flavors, 'new_data':new_data, 'date':date})
 
     else:
         flavors = Standard_Flavors.objects.all()

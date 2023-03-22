@@ -20,6 +20,12 @@
         <h1 class="my-font">Standard Flavors</h1>
     </div>
 
+    <div class="update-text"> 
+        {% if new_data %}
+            <h2 class="p1">(~NEW FLAVORS~ as of {{ date }})</h2>
+        {% endif %}
+        </div>
+
 
     <div class="standard-container"> 
         {% for flavor in flavors %}
