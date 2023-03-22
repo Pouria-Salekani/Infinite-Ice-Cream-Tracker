@@ -73,7 +73,10 @@ def show_flavor(request):
 
     else:
         flavors = Standard_Flavors.objects.all()
-        return render(request, 'standard_flavors/standard.html', {'flavors':flavors})
+        new_data = False
+        date = str(datetime.date.today())
+        date = date[date.find('-')+1:]
+        return render(request, 'standard_flavors/standard.html', {'flavors':flavors, 'new_data':new_data, 'date':date})
 
 
 
