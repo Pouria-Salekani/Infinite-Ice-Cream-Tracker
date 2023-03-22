@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-g3-*p8e1pjd&)49f8k5uutpge36)f#g8=vl38%qc#o@1c^**2e
 #MAKE THIS FALSE AND IF NEED BE, ADD THE DEBUG STUFF TO THE URLS
 DEBUG = True
 
-ALLOWED_HOSTS = ['web-production-d55a.up.railway.app']
+ALLOWED_HOSTS = ['web-production-d55a.up.railway.app', '127.0.0.1']
 
 
 # Application definition
