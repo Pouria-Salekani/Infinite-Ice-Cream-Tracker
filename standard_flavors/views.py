@@ -6,13 +6,13 @@ import json
 
 
 def check_new_data(data):
-    new_data = False
+    new_data = None
     for item in data:
         if item == 'standard_flavors':
             for std in data[item]:
                 flavor_name = std
                 if not Standard_Flavors.objects.filter(name=flavor_name).exists():
-                     new_data = True
+                     new_data = flavor_name
 
     return new_data
 
@@ -73,10 +73,10 @@ def show_flavor(request):
 
     else:
         flavors = Standard_Flavors.objects.all()
-        new_data = False
-        date = str(datetime.date.today())
-        date = date[date.find('-')+1:]
-        return render(request, 'standard_flavors/standard.html', {'flavors':flavors, 'new_data':new_data, 'date':date})
+        # new_data = False
+        # date = str(datetime.date.today())
+        # date = date[date.find('-')+1:]
+        return render(request, 'standard_flavors/standard.html', {'flavors':flavors})
 
 
 

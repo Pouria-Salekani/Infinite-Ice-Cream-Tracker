@@ -28,16 +28,13 @@
         <h1 class="my-font">Standard Flavors</h1>
     </div>
 
-    <div class="update-text"> 
-        {% if new_data %}
-            <h2 class="p1-update">(~NEW FLAVORS~ as of)</h2>
-        {% endif %}
-    </div>
-
 
     <div class="standard-container"> 
         {% for flavor in flavors %}
             <p class="p1">{{ flavor.name }}</p>
+            {% if flavor.name == new_data %}
+                <p>WORKKKS</p>
+            {% endif %}
         {% endfor %}
     </div>
 </body>
