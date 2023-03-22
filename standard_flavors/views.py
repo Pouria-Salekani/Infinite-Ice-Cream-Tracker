@@ -62,6 +62,7 @@ def show_flavor(request):
         print(request.body)
 
         new_data = grab_flavors(request.body)
+        print('value of new data', new_data)
 
         #shows the updated today whenever Scrapy updates it
         date = str(datetime.date.today())
