@@ -9,7 +9,6 @@ urlpatterns = [
     path('',  views.home, name='home'),
     path('special-flavors/', include('special_flavors.urls'), name='special_flavors'),
     path('standard-flavors/', include('standard_flavors.urls'), name='standard_flavors'),
-    path('admin/', admin.site.urls),
 ]
 
 # if settings.DEBUG is False:
